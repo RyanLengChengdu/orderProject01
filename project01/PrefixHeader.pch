@@ -1,0 +1,64 @@
+//
+//  PrefixHeader.pch
+//  ZJLProject
+//
+//  Created by SCRB-MiniA on 2020/12/30.
+//  Copyright © 2020 SCRB-MiniA. All rights reserved.
+//
+
+//#import "BitTopFuturesTwo-Swift.h"
+//#import "project01-Swift.h"
+//#ifndef PrefixHeader_pch
+//#define PrefixHeader_pch
+//#define  kTabBarHeight         (iPhoneX|| iPhoneXr || iPhoneXs || iPhoneXsMax ? (49.f+34.f) : 49.f)
+//
+//#define STATUSBAR_HEIGHT  (iPhoneX|| iPhoneXr || iPhoneXs || iPhoneXsMax ? 44 : 20)
+//#define NAV_HEIGHT    (iPhoneX|| iPhoneXr || iPhoneXs || iPhoneXsMax ? 88 : 64)
+//#define PLAY_DETAIL_INFO_HEIGHT (iPhoneX|| iPhoneXr || iPhoneXs || iPhoneXsMax ? 25 : 0)
+//#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+//#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+#define IPHONE_X \
+({BOOL isPhoneX = NO;\
+if (@available(iOS 11.0, *)) {\
+isPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0;\
+}\
+(isPhoneX);})
+
+//适配布局常用内联函数和宏
+//状态栏高度
+//NS_INLINE CGFloat Status_Bar_Height(){
+//    if (@available(iOS 11.0,*)) {
+//        UIWindow *mainView = [UIApplication sharedApplication].keyWindow;
+//        return mainView.safeAreaInsets.top;
+//    }else{
+//        return 20.0f;
+//    }
+//}
+
+//导航栏高度
+#define Navigation_Bar_Height 44.0f
+
+//状态栏+导航栏高度
+//NS_INLINE CGFloat Status_And_Navigation_Height(){
+//    return Status_Bar_Height() + Navigation_Bar_Height;
+//}
+
+//TabBar高度
+#define TabBar_Height 49.0f
+
+//底部安全区域高度34.0f
+//NS_INLINE CGFloat Bottom_Safe_Height(){
+//    if (@available(iOS 11.0,*)) {
+//        UIWindow *mainView = [UIApplication sharedApplication].keyWindow;
+//        return mainView.safeAreaInsets.bottom;
+//    }else{
+//        return 0.0f;
+//    }
+//}
+//
+////TabBar+安全区域高度
+//NS_INLINE CGFloat TabBar_And_Bottom_Safe_Height(){
+//    return Bottom_Safe_Height() + TabBar_Height;
+//}
+
+//#endif /* PrefixHeader_pch */

@@ -1,0 +1,8 @@
+target "project01" do
+pod 'LYEmptyView'
+pod 'FMDB'
+pod 'XLForm'
+pod 'WMZDialog'
+pod 'Masonry'
+pod 'BRPickerView'
+end

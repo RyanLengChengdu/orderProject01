@@ -1,0 +1,49 @@
+PODS:
+  - BRPickerView (2.7.6):
+    - BRPickerView/AddressPickerView (= 2.7.6)
+    - BRPickerView/Base (= 2.7.6)
+    - BRPickerView/DatePickerView (= 2.7.6)
+    - BRPickerView/StringPickerView (= 2.7.6)
+  - BRPickerView/AddressPickerView (2.7.6):
+    - BRPickerView/Base
+  - BRPickerView/Base (2.7.6)
+  - BRPickerView/DatePickerView (2.7.6):
+    - BRPickerView/Base
+  - BRPickerView/StringPickerView (2.7.6):
+    - BRPickerView/Base
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
+  - LYEmptyView (1.3.1)
+  - Masonry (1.1.0)
+  - WMZDialog (1.4.6)
+  - XLForm (4.3.0)
+
+DEPENDENCIES:
+  - BRPickerView
+  - FMDB
+  - LYEmptyView
+  - Masonry
+  - WMZDialog
+  - XLForm
+
+SPEC REPOS:
+  trunk:
+    - BRPickerView
+    - FMDB
+    - LYEmptyView
+    - Masonry
+    - WMZDialog
+    - XLForm
+
+SPEC CHECKSUMS:
+  BRPickerView: 2a1620caf218e37a3aca9626732719a419928b15
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  LYEmptyView: b6d418cfa38b78df0cf243f9a9c25ccbdc399922
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  WMZDialog: 629b5ceaab043291394952143a6cb08b2c1c500d
+  XLForm: a439f9512078ed538e8335c8b06d3f3286bbfd37
+
+PODFILE CHECKSUM: 96816a69669306a9a673ef870d4cad9e23da9b61
+
+COCOAPODS: 1.11.2
