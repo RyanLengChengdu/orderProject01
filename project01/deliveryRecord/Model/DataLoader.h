@@ -15,7 +15,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface DataLoader : NSObject
 -(void)loadListDataWithFinishBlock:(ListLoaderFinishBlock)finishBlock;
 -(void)loadListData2WithFinishBlock:(ListLoaderFinishBlock)finishBlock;
--(void)loadListData_dateWithFinishBlock:(ListLoaderFinishBlock2)finishBlock;
 @end
 
 NS_ASSUME_NONNULL_END
