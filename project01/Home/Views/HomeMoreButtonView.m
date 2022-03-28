@@ -67,7 +67,10 @@
     //当点击的时候持有该block   此句让这个deleteCellView拥有block的属性，才能在最下方clickButton方法内执行从ViewController传递过来的block
     self.deleteBlock = [clickBlock copy];
     //让新出现的View不影响下面的viewController
-    [[UIApplication sharedApplication].keyWindow addSubview:self];
+    //[[UIApplication sharedApplication].keyWindow addSubview:self];
+//    UIWindow *window = [[[UIApplication sharedApplication]windows] objectAtIndex:0];
+//    [window addSubview:self];
+    [self.window.windowScene.keyWindow addSubview:self];
     //UIView的动画方法都是类方法，所以需要用UIView来调用
    /* [UIView animateWithDuration:1.f animations:^{
         
@@ -85,7 +88,7 @@
     self.editButton.frame = CGRectMake(point.x-88, point.y, 22, 22);
     self.deleteButton.frame = CGRectMake(point.x-34, point.y, 22, 22);
     self.editBlock = [clickBlock2 copy];
-    [[UIApplication sharedApplication].keyWindow addSubview:self];
+    [self.window.windowScene.keyWindow addSubview:self];
 }
 
 -(void)_dismissDeleteView{
