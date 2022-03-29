@@ -19,14 +19,12 @@
 @property(nonatomic,strong,readwrite)UILabel *phoneLabel;
 @property(nonatomic,copy,readwrite)NSString *numberr;
 @property(nonatomic,strong,readwrite)UIImageView *phoneImageView;
-
 @property(nonatomic,strong,readwrite)UILabel *destinationLabel;
 @property(nonatomic,strong,readwrite)UIImageView *placeImageView;
 @property(nonatomic,strong,readwrite)UIView *lineView;
 @property(nonatomic,strong,readwrite)UIView *squareView;
 //右下角三个点
 @property(nonatomic,strong,readwrite)UIImageView *dotImageView;
-
 @property(nonatomic,readwrite)NSInteger *ItemID;
 @end
 
@@ -272,27 +270,9 @@
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10.0) {
         //设备系统为IOS 10.0或者以上的
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str] options:@{} completionHandler:nil];
-    }else{
-         //设备系统为IOS 10.0以下的
-       [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str] options:nil completionHandler:^(BOOL success) {
-           NSLog(@"拨打电话");
-       }];
-        //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
-
-
-    
-    
-//    UIWebView * callWebview = [[UIWebView alloc] init];
-//    [callWebview loadRequest:[NSURLRequest  requestWithURL:[NSURL URLWithString:str]]];
-//    [[UIApplication  sharedApplication].keyWindow  addSubview:callWebview];
-//        NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"tel:%@",_numberr];
-//        WKWebView *callWebview = [[WKWebView alloc] init];
-//        [callWebview loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:str]]];
-//        [[UIApplication sharedApplication].keyWindow addSubview:callWebview];
-}
+    }
 }
 //什么都不做，或者不把触摸事件往下传递就行
-    
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{}
 -(void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{}
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{}

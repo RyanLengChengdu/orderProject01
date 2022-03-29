@@ -185,7 +185,6 @@
 		5F72C6A627E305DE00AC0AC7 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				5FF2F35127EAB11A008BFE46 /* Model */,
 				5FF2F35027EAB10E008BFE46 /* Views */,
 				5FF2F34F27EAB0FA008BFE46 /* controller */,
 			);
@@ -272,13 +271,6 @@
 				5FFF2A5B27ED8B45002D8AA3 /* HomeMoreButtonView.m */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		5FF2F35127EAB11A008BFE46 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		9FCFA2A673E77F94171DCE41 /* Frameworks */ = {

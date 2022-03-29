@@ -19,21 +19,16 @@
 
 @interface HomeViewController () <UITableViewDelegate,UITableViewDataSource,HomeTableViewCellDelegate>
 @property(nonatomic,strong,readwrite)UITableView *tableView;
-
 @property(nonatomic,strong,readwrite)UIView *topView;
 @property(nonatomic,strong,readwrite)UIButton *buttonLeft;
 @property(nonatomic,strong,readwrite)UIButton *buttonRight;
 @property(nonatomic,strong,readwrite)UILabel * label0;
-
 @property(nonatomic,strong,readwrite)DataLoader *dataLoader;
 @property(nonatomic,strong,readwrite)NSMutableArray *dataArray;
 @property(nonatomic,strong,readwrite)BRDatePickerView *datePickerView;
 @property(nonatomic,strong,readwrite)UIImageView *placeholderImageView;
 @property(nonatomic,strong,readwrite)UILabel *label;
 @property(nonatomic,strong,readwrite)UILabel *dateLabel;
-
-
-
 @end
 
 @implementation HomeViewController
@@ -59,7 +54,6 @@
     _tableView.dataSource = self;
     _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:_tableView];
-    
     [_tableView addSubview:({
         _placeholderImageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"home_Img"]];
         //_placeholderImageView.frame = CGRectMake(75, 219, 225, 169.5);
@@ -81,16 +75,12 @@
     [_label mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(_placeholderImageView.mas_bottom);
         make.centerX.mas_equalTo(0);
-        
     }];
-    
     [self getDataFromDb];
-   
 }
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    
     _dateLabel.text = @"";
 }
 - (void)viewDidLoad {
@@ -104,9 +94,7 @@
         }else{
             _topView = [[UIView alloc]initWithFrame:CGRectMake(0,0,self.view.frame.size.width,88)];
         }
-        
         [_topView setBackgroundColor:[UIColor colorWithRed:137.0/255 green:210.0/255 blue:44.0/255 alpha:1]];
-        //_topView.userInteractionEnabled = YES;
         _topView;
     })];
     
@@ -146,15 +134,13 @@
                     [strongSelf.dateLabel sizeToFit];
                     //根据str查询数据库
                     [strongSelf getDataFromDBWithStr:str];
-                    
-                    //刷新tableview
                 };
         
-                BRPickerStyle *customStyle = [[BRPickerStyle alloc]init];
+        BRPickerStyle *customStyle = [[BRPickerStyle alloc]init];
         customStyle.pickerColor = [UIColor whiteColor];
         customStyle.selectRowTextColor = [UIColor colorWithRed:137.0/255 green:210.0/255 blue:44.0/255 alpha:1];
-                customStyle.separatorColor = [UIColor colorWithRed:137.0/255 green:210.0/255 blue:44.0/255 alpha:1];
-                _datePickerView.pickerStyle = customStyle;
+        customStyle.separatorColor = [UIColor colorWithRed:137.0/255 green:210.0/255 blue:44.0/255 alpha:1];
+        _datePickerView.pickerStyle = customStyle;
         UITapGestureRecognizer *recognizer2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(_showDatePicker)];
         [_buttonLeft addGestureRecognizer:recognizer2];
         _buttonLeft;
@@ -182,7 +168,6 @@
         [_buttonRight setImage:[UIImage imageNamed:@"nav_record"] forState:UIControlStateNormal];
         UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(_jumpTodeliveryRecord)];
         [_buttonRight addGestureRecognizer:recognizer];
-//        [self.buttonRight addTarget:self action:@selector(_jumpTodeliveryRecord:) forControlEvents:UIControlEventTouchUpInside];
         _buttonRight;
     })];
     [_buttonRight mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -190,10 +175,6 @@
         make.bottom.equalTo(_topView.mas_bottom).with.offset(-15);
     }];
 }
-
-
-
-
 
 -(void)_jumpTodeliveryRecord{
     deliveryRecordViewController *recordViewController = [[deliveryRecordViewController alloc]init];
@@ -220,7 +201,7 @@
 
 
 //delegate自定义代理方法
-- (void)tableViewCell:(UITableViewCell *)tableViewCell idd:(NSInteger *)idd{
+- (void)tableViewCell:(UITableViewCell *)tableViewCell idd:(int)idd{
     
     //根据idd找到该条数据 复制到record表
     NSString *doc=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
@@ -234,7 +215,7 @@
 //            NSMutableString *sql = [NSMutableString string];
 //            [sql appendString:@"DELETE FROM "];
             NSString * tableName = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
-            NSString *sql = [NSString stringWithFormat:@"delete from %@ where id = %d",tableName,(int)idd];
+            NSString *sql = [NSString stringWithFormat:@"delete from %@ where id = %d",tableName,idd];
 //            [sql appendString:tableName];
 //            [sql appendString: @" WHERE id = '%d'",idd];
             BOOL res = [db executeUpdate:sql];
@@ -245,20 +226,13 @@
             }
             [db close];
         }
-    //根据idd删除配送表中的数据
-    
-    //在ViewController中删除该条数据
-    //[self getDataFromDb];
     
     [_dataArray removeObjectAtIndex:[_tableView indexPathForCell:tableViewCell].row];
     [_tableView reloadData];
     
-    //[_tableView deleteRowsAtIndexPaths:@[[_tableView indexPathForCell:tableViewCell]] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
-
-
--(void)tableViewCell:(UITableViewCell *)tableViewCell clickDotView:(UIImageView *)dotImageView idd:(NSInteger *)idd{
+-(void)tableViewCell:(UITableViewCell *)tableViewCell clickDotView:(UIImageView *)dotImageView idd:(int)idd{
     HomeMoreButtonView *moreButtonView = [[HomeMoreButtonView alloc]initWithFrame:self.view.bounds];
     CGRect rect = [tableViewCell convertRect:dotImageView.frame toView:nil];
     [[NSUserDefaults standardUserDefaults]setObject:@([_tableView indexPathForCell:tableViewCell].row) forKey:@"editRow"];
@@ -277,7 +251,7 @@
         //            NSMutableString *sql = [NSMutableString string];
         //            [sql appendString:@"DELETE FROM "];
                     NSString * tableName = [[NSUserDefaults standardUserDefaults] objectForKey:@"username"];
-                    NSString *sql = [NSString stringWithFormat:@"delete from %@ where id = %d",tableName,(int)idd];
+                    NSString *sql = [NSString stringWithFormat:@"delete from %@ where id = %d",tableName,idd];
         //            [sql appendString:tableName];
         //            [sql appendString: @" WHERE id = '%d'",idd];
                     BOOL res = [db executeUpdate:sql];
@@ -297,16 +271,6 @@
             [strongself.tableView reloadData];
         }];
             
-            
-            
-//            //block作用：删除cell
-//            __strong typeof(self)strongself = weakself;
-//
-//            //在此处增加数据库的逻辑
-//            [strongself _deleteItemWithIdd:idd];
-//            [strongself.dataArray removeObjectAtIndex:[strongself.tableView indexPathForCell:tableViewCell].row];
-//            //[strongself.tableView deleteRowsAtIndexPaths:@[[strongself.tableView indexPathForCell:tableViewCell]] withRowAnimation:UITableViewRowAnimationAutomatic];
-//            [strongself.tableView reloadData];
 
     __weak typeof(self) weakself2 = self;
     [moreButtonView showDeleteViewFromPoint:CGPointMake(rect.origin.x, rect.origin.y) clickBlock2:^{
@@ -316,11 +280,7 @@
         editVC.title = @"编辑订单";
         [strongself.navigationController pushViewController:editVC animated:YES];
     }];
-    
-    
-    
 }
-
 
 -(void)getDataFromDb{
     //获取数据
@@ -354,7 +314,7 @@
         NSMutableArray *listItemArray = @[].mutableCopy;
         while ([rs next]) {
             ListItem *item = [[ListItem alloc]init];
-            item.idd = (NSInteger *)[rs intForColumn:@"id"];
+            item.idd = [rs intForColumn:@"id"];
             item.amount = [rs stringForColumn:@"amount"];
             item.deliveryTime = [rs stringForColumn:@"deliveryTime"];
             item.username = [rs stringForColumn:@"username"];
@@ -376,7 +336,7 @@
     [_datePickerView show];
 }
 
--(void)_deleteItemWithIdd:(NSInteger *)idd{
+-(void)_deleteItemWithIdd:(int)idd{
     NSString *doc=[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *userDBPath=[doc stringByAppendingPathComponent:@"user.sqlite"];
     FMDatabase *db = [FMDatabase databaseWithPath:userDBPath];
@@ -395,7 +355,6 @@
             NSLog(@"失败");
         }
         [db close];
-    
 }
 }
 @end

@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ListItem : NSObject
-@property(nonatomic,readwrite)NSInteger *idd;
+@property(nonatomic,assign)NSInteger idd;
 @property(nonatomic,copy,readwrite)NSString *amount;
 @property(nonatomic,copy,readwrite)NSString *deliveryTime;
 @property(nonatomic,copy,readwrite)NSString *username;

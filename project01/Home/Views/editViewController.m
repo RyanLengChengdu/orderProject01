@@ -36,7 +36,6 @@
 -(instancetype)init{
     if ([super init]) {
         
-        
     }
     return self;
 }
@@ -159,23 +158,13 @@
         UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(_show)];
         [_field2 addGestureRecognizer:recognizer];
                 //[_datePickerView show];
-        
-        
                 _field2.inputView = _datePickerView;
-                
-                
-                
                 _field2.placeholder = _item.deliveryTime;
                 _field2.borderStyle = UITextBorderStyleRoundedRect;
                 _field2.layer.borderWidth = 0.5f;
                 _field2.layer.borderColor = [[UIColor colorWithRed:137.0/255 green:210.0/255 blue:44.0/255 alpha:1.0] CGColor];
                 [_field2.layer setBorderColor:(__bridge CGColorRef _Nullable)([UIColor colorWithRed:137.0/255 green:210.0/255 blue:44.0/255 alpha:1])];
                 _field2;
-        
-//
-//        _datePickerView;
-        
-        
     })];
     
     [_field2 mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -336,13 +325,6 @@
     [_field4 resignFirstResponder];
     [_field5 resignFirstResponder];
 
-}
-
--(void)selectDate{
-//    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-//    [formatter setDateFormat:@"MM-dd HH:mm"];
-//    [formatter setLocale:_dateLocale];
-//    _field2.text = [NSString stringWithFormat:@"%@",[formatter stringFromDate:_datePicker.date]];
 }
 
 -(void)_show{
